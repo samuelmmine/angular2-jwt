@@ -15,20 +15,25 @@ export class StatusComponent implements OnInit {
   ngOnInit(): void {
     
     const token = localStorage.getItem('token');
+
+    console.log(token);
     
-    if (token) {
-      this.auth.ensureAuthenticated(token)
-      .then((user) => {
-        console.log(user.json());
+    if (token != '') {
 
-        if (user.json().status === 'success') {
-          this.isLoggedIn = true;
-        }
-      })
+      this.isLoggedIn = true;
 
-      .catch((err) => {
-        console.log(err);
-      });
+      // this.auth.ensureAuthenticated(token)
+      // .then((user) => {
+      //   console.log(user.json());
+
+      //   if (user.json().status === 'success') {
+      //     this.isLoggedIn = true;
+      //   }
+      // })
+
+      // .catch((err) => {
+      //   console.log(err);
+      // });
 
     }
 

@@ -7,23 +7,30 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AuthService {
 
-  private BASE_URL: string = 'http://localhost:5000/auth';
-  private headers: Headers = new Headers({'Content-Type': 'application/json'});
+  public BASE_URL_PROXY: string = 'http://localhost:4200/v1';
+  public BASE_URL: string = 'http://localhost:4200/';
+  private headers: Headers = new Headers({
+    'Content-Type' : 'application/json'
+  });
   
   constructor(private http: Http) {}
   
   login(user: User): Promise<any> {
-    let url: string = `${this.BASE_URL}/login`;
-    return this.http.post(url, user, {headers: this.headers}).toPromise();
+    let url: string = `${this.BASE_URL_PROXY}/login`;
+    let retorno = this.http.post(url, user, {headers: this.headers}).toPromise();
+    console.log(retorno);
+
+
+    return retorno;
   }
 
   register(user: User): Promise<any> {
-    let url: string = `${this.BASE_URL}/register`;
+    let url: string = `${this.BASE_URL_PROXY}/register`;
     return this.http.post(url, user, {headers: this.headers}).toPromise();
   }
 
   ensureAuthenticated(token): Promise<any> {
-    let url: string = `${this.BASE_URL}/status`;
+    let url: string = `${this.BASE_URL}status`;
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -31,7 +38,7 @@ export class AuthService {
     return this.http.get(url, {headers: headers}).toPromise();
   }
   
-  test(): string {
-    return 'trabalhando neste módulo';
+  aviso(): string {
+    return 'Chamando o auth.service';
   }
 }

@@ -13,12 +13,13 @@ export class LoginComponent implements OnInit {
 
   user: User = new User();
   constructor(private router:Router ,private auth: AuthService) {}
+
   onLogin(): void {
     this.auth.login(this.user)
     .then((user) => {
-      localStorage.setItem('token', user.json().auth_token);
-      console.log(user.json());
-      this.router.navigateByUrl('/status');
+      localStorage.setItem('token', user.json().token);
+      console.log(user.json().token);
+      this.router.navigate(['status']);
     })
     .catch((err) => {
       console.log(err);
@@ -27,8 +28,12 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
   }
 
-  ngOnInit(){
+  aviso(){
+     console.log( this.auth.aviso());
+  }
 
+  ngOnInit(){
+    this.aviso();
   }
 
 }
