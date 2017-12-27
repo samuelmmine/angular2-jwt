@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'status',
@@ -9,33 +12,42 @@ import { AuthService } from '../../services/auth.service';
 export class StatusComponent implements OnInit {
 
   isLoggedIn: boolean = false;
+  user: User = new User();
+  usuario:User = '';
 
-  constructor(private auth: AuthService) {}
+  constructor(private router:Router, private auth: AuthService) {}
+
+  offLogin(): void {
+    localStorage.setItem('token', '');
+    this.router.navigate(['home']);
+    this.user = null;
+    console.log('Usuário off:' + this.user);
+  }
+
+  getUsers() {
+    this.usuario = this.auth.getUsers();
+    this.auth.getUsers()
+    .then((user) => {
+      this.usuario = user.json();
+      console.log(this.usuario);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  }
 
   ngOnInit(): void {
     
     const token = localStorage.getItem('token');
-
-    console.log(token);
-    
     if (token != '') {
-
       this.isLoggedIn = true;
 
-      // this.auth.ensureAuthenticated(token)
-      // .then((user) => {
-      //   console.log(user.json());
+      this.getUsers();
 
-      //   if (user.json().status === 'success') {
-      //     this.isLoggedIn = true;
-      //   }
-      // })
-
-      // .catch((err) => {
-      //   console.log(err);
-      // });
-
+      this.usuario;
     }
+
 
   }
   

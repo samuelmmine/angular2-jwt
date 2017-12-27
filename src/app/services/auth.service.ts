@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { User } from '../models/user';
 import 'rxjs/add/operator/toPromise';
 
@@ -19,10 +19,16 @@ export class AuthService {
     let url: string = `${this.BASE_URL_PROXY}/login`;
     let retorno = this.http.post(url, user, {headers: this.headers}).toPromise();
     console.log(retorno);
-
-
     return retorno;
   }
+
+  getUsers(): Promise<any> {
+    let url: string = `${this.BASE_URL_PROXY}/user`;
+    let headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    let options = new RequestOptions({ headers: headers });
+    let retorno = this.http.get(url, options).toPromise();
+    return retorno;
+}
 
   register(user: User): Promise<any> {
     let url: string = `${this.BASE_URL_PROXY}/register`;
