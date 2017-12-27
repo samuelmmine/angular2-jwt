@@ -1,13 +1,70 @@
-<div class="container">
-  <div class="row">
-  	  <a class="navbar-brand" routerLink="/home">Home</a> 
-  	  <a class="navbar-brand" routerLink="/login">Login</a>
-  	  <a class="navbar-brand" routerLink="/register">Novo User</a>
-			<a class="navbar-brand" routerLink="/status">Status</a>
-  </div>
 
   <div class="row">
+	  <nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/home">Home</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/register">Novo User</a></li>
+            <li><a routerLink="/status">Status</a></li>
+	      </ul>
+	     
+	      
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+ </div>
+  <div class="row">
+
+  	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  </ol>
+
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	    <div class="item active">
+	      <img src="http://www.viaregiatur.com.br/wp-content/uploads/2017/02/pacote-de-viagem-para-rio-de-janeiro.jpg" alt="Rio de Janeiro">
+	      <div class="carousel-caption">
+
+	      </div>
+	    </div>
+	    <div class="item">
+	      <img src="http://www.viaregiatur.com.br/wp-content/uploads/2017/05/pacote-de-viagem-para-rio-de-janeiro-regiao-dos-lagos-petropolis-cabo-frio-arraial-do-baco.jpg" alt="Rio de Janeiro">
+	      <div class="carousel-caption">
+
+	      </div>
+	    </div>
+
+	     <div class="item">
+	      <img src="http://www.viaregiatur.com.br/wp-content/uploads/2017/05/pacote-de-viagem-para-rio-de-janeiro-regiao-dos-lagos-petropolis-cabo-frio-arraial-do-baco.jpg" alt="Rio de Janeiro">
+	      <div class="carousel-caption">
+
+	      </div>
+	    </div>
+	  </div>
+	</div>
+ </div>
+
+
+<div class="container">
 	<router-outlet></router-outlet>
-  </div>
-  
 </div>
+
+ 
