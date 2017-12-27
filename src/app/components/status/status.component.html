@@ -1,15 +1,28 @@
-<div class="row">
-  <div class="col-md-12">
+  <div class="row">
     <h1>Usuário Status</h1>
     <hr><br>
+  </div>
+
+  <div class="col-md-6">
+    
+ 
     <p>Usuário está logado? {{isLoggedIn}}  </p>
     <p><b>Nome</b>   : {{usuario.name}}</p>
     <p><b>Email</b> : {{usuario.email}}</p>
     <p><b>Cadastrado</b> : {{usuario.created_at | date: 'dd/MM/yyyy'}}</p>
   </div>
 
-  
-  <div class="col-md-12">
-    <a class="" (click)="offLogin()">Sair</a>
+
+  <div class="col-md-6">
+      <div class="col-md-6">
+        <a class="" (click)="offLogin()">Sair</a>
+      </div>
+
+      <div class="col-md-6">
+        <select class="form-control" id="sel1">
+          <option *ngFor="let estado of estados" [ngValue]="estado">
+              {{estado.name}}
+          </option>
+      </select>
+    </div>
   </div>
-</div>

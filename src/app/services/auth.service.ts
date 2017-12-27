@@ -30,6 +30,15 @@ export class AuthService {
     return retorno;
 }
 
+  getAllFederatives() :Promise<any> {
+    
+    let url: string = `${this.BASE_URL_PROXY}/address/federative-unit`;
+    let headers = new Headers({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    let options = new RequestOptions({ headers: headers });
+    let retorno = this.http.get(url, options).toPromise();
+    return retorno;
+  }
+
   register(user: User): Promise<any> {
     let url: string = `${this.BASE_URL_PROXY}/register`;
     return this.http.post(url, user, {headers: this.headers}).toPromise();

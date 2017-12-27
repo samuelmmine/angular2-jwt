@@ -14,6 +14,7 @@ export class StatusComponent implements OnInit {
   isLoggedIn: boolean = false;
   user: User = new User();
   usuario:User = '';
+  estados:string[] = [];
 
   constructor(private router:Router, private auth: AuthService) {}
 
@@ -34,7 +35,18 @@ export class StatusComponent implements OnInit {
     .catch((err) => {
       console.log(err);
     });
+  }
 
+  getAllFederatives(){
+    let estados = this.auth.getAllFederatives();
+    this.auth.getAllFederatives()
+    .then((user) => {
+      this.estados = user.json();
+      console.log(this.estados);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   ngOnInit(): void {
@@ -44,6 +56,8 @@ export class StatusComponent implements OnInit {
       this.isLoggedIn = true;
 
       this.getUsers();
+
+      this.getAllFederatives();
 
       this.usuario;
     }
