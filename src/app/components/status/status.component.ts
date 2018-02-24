@@ -61,8 +61,5 @@ export class StatusComponent implements OnInit {
 
       this.usuario;
     }
-
-
   }
-  
 }

@@ -6,7 +6,6 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
-
   public BASE_URL_PROXY: string = 'http://localhost:4200/v1';
   public BASE_URL: string = 'http://localhost:4200/';
   private headers: Headers = new Headers({
@@ -56,4 +55,6 @@ export class AuthService {
   aviso(): string {
     return 'Chamando o auth.service';
   }
+
+
 }
